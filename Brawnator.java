@@ -52,13 +52,13 @@ public class Brawnator {
         
         JLabel resultadoLabel = new JLabel("Seu personagem é: ");
         resultadoLabel.setVisible(false);
-        
-        painel.add(resultadoLabel);
+     
         painel.add(generoTextField);
         painel.add(armaPrincipalTextField);
         painel.add(armaSecundariaTextField);
         painel.add(buscarButton);
-
+        painel.add(resultadoLabel);
+        
         janela.add(painel);
 
         buscarButton.addActionListener(new ActionListener() {

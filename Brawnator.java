@@ -1,16 +1,15 @@
 package com.mycompany.brawnator;
-
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Brawnator {
-
     public static void main(String[] args) {
         List<String[]> homem = new ArrayList<>();
         String[] homem1 = {"Ezio", "espada", "orb"};
@@ -66,7 +65,15 @@ public class Brawnator {
         // Adiciona o painel à janela
         janela.add(painel);
 
-        // Define o comportamento do botão quando clicado
+        // Cria um rótulo para exibir o resultado
+        JLabel resultadoLabel = new JLabel("Seu personagem é: ");
+        resultadoLabel.setVisible(false); // Começa oculto
+
+        // Adiciona o rótulo ao painel
+        painel.add(resultadoLabel);
+
+        // ... (Resto do código)
+
         buscarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -80,13 +87,15 @@ public class Brawnator {
                 for (String[] personagem : personagens) {
                     if (personagem[1].equals(armaPrincipal) && personagem[2].equals(armaSecundaria)) {
                         encontrado = true;
-                        System.out.println("Seu personagem é: " + personagem[0]);
+                        resultadoLabel.setText("Seu personagem é: " + personagem[0]);
+                        resultadoLabel.setVisible(true); // Exibe o resultado
                         break;
                     }
                 }
 
                 if (!encontrado) {
-                    System.out.println("Personagem não encontrado.");
+                    resultadoLabel.setText("Personagem não encontrado.");
+                    resultadoLabel.setVisible(true); // Exibe a mensagem de "não encontrado"
                 }
             }
         });

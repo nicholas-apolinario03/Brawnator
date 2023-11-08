@@ -35,44 +35,31 @@ public class Brawnator {
         mulher.add(mulher4);
         mulher.add(mulher5);
 
-        // Cria a janela da interface
         JFrame janela = new JFrame("Brawnator");
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setSize(400, 200);
-
-        // Cria um painel para conter os componentes da interface
+        
         JPanel painel = new JPanel();
-
-        // Cria os campos de entrada de texto
+        
         JTextField generoTextField = new JTextField(20);
         generoTextField.setText("Gênero (homem/mulher)");
-
         JTextField armaPrincipalTextField = new JTextField(20);
         armaPrincipalTextField.setText("Arma Principal");
-
         JTextField armaSecundariaTextField = new JTextField(20);
         armaSecundariaTextField.setText("Arma Secundária");
 
-        // Cria um botão para fazer a pesquisa
         JButton buscarButton = new JButton("Buscar");
-
-        // Adiciona os campos de entrada e o botão ao painel
+        
+        JLabel resultadoLabel = new JLabel("Seu personagem é: ");
+        resultadoLabel.setVisible(false);
+        
+        painel.add(resultadoLabel);
         painel.add(generoTextField);
         painel.add(armaPrincipalTextField);
         painel.add(armaSecundariaTextField);
         painel.add(buscarButton);
 
-        // Adiciona o painel à janela
         janela.add(painel);
-
-        // Cria um rótulo para exibir o resultado
-        JLabel resultadoLabel = new JLabel("Seu personagem é: ");
-        resultadoLabel.setVisible(false); // Começa oculto
-
-        // Adiciona o rótulo ao painel
-        painel.add(resultadoLabel);
-
-        // ... (Resto do código)
 
         buscarButton.addActionListener(new ActionListener() {
             @Override
@@ -88,19 +75,19 @@ public class Brawnator {
                     if (personagem[1].equals(armaPrincipal) && personagem[2].equals(armaSecundaria)) {
                         encontrado = true;
                         resultadoLabel.setText("Seu personagem é: " + personagem[0]);
-                        resultadoLabel.setVisible(true); // Exibe o resultado
+                        resultadoLabel.setVisible(true); 
                         break;
                     }
                 }
 
                 if (!encontrado) {
                     resultadoLabel.setText("Personagem não encontrado.");
-                    resultadoLabel.setVisible(true); // Exibe a mensagem de "não encontrado"
+                    resultadoLabel.setVisible(true);
                 }
             }
         });
 
-        // Torna a janela visível
+
         janela.setVisible(true);
     }
 }
